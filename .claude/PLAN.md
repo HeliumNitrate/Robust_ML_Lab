@@ -183,6 +183,7 @@ Telekom ve bankacılığın kesişimindeki problemlere (dengesiz/sınırlı veri
 - [ ] RadioML hangi sürüm (lisans ve boyuta göre)
 - [ ] Zaman serisi anomali veri seti seçimi
 - [ ] GPU erişimi (yerel / bulut), Docker GPU desteği ne zaman
+- [ ] Lisans: şimdilik yok (kod görünür, kullanım izni yok). Proje olgunlaşınca yeniden değerlendir: PolyForm Noncommercial, AGPL veya MIT. Not: lisans sonradan eklenebilir, ama verilen bir lisans o sürüm için geri alınamaz.
 
 ## Plan dışı, ileride
 
