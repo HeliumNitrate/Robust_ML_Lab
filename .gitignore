@@ -16,3 +16,6 @@ dist/
 # Data and run outputs (leading slash = repo root only, so src/rmlab/data/ is kept)
 /data/
 /experiments/
+
+# Claude Code worktrees
+/.claude/worktrees/

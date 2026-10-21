@@ -136,3 +136,6 @@ python -m rmlab.eval  --run experiments/<koşu>
 - Bitince: testleri çalıştır, `.claude/PLAN.md`'de maddeyi işaretle, "İlerleme günlüğü"ne bir satır ekle.
 - Küçük, anlamlı commit'ler. Bir ana başlık bitince sürüm etiketi öner.
 - Bir karar `.claude/PLAN.md`'deki "Açık kararlar" listesindeyse, kendin karar verme; seçenekleri ve önerini sun.
+- Git ve GitHub işlemlerini (commit, push, dal) Claude yapmaz. Komutu ve ne işe yaradığını söyler, kullanıcı çalıştırır.
+- Her adımın sonunda bir okuma rehberi ver: yeni ve değişen dosyalar; her dosyadaki fonksiyon ve class'lar (birer cümleyle); bunları kimin çağırdığı ve neyi kullandıkları; önerilen okuma sırası.
+- Referans repo: `../NN_training`. Yalnızca okunur, hiçbir dosyası değiştirilmez. Bir PLAN maddesine başlarken orada benzer bir şey yapılmış mı bak (özellikle `docs/FINDINGS.md`, `docs/CHANGELOG.md`, `docs/RESULTS.md`). Örnek alınacak veya kaçınılacak bir şey bulursan söyle. Kodu kopyalama, rmlab'ın mimarisine uyarlayarak yeniden yaz.

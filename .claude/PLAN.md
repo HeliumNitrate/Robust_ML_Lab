@@ -183,6 +183,7 @@ Telekom ve bankacılığın kesişimindeki problemlere (dengesiz/sınırlı veri
 - [ ] RadioML hangi sürüm (lisans ve boyuta göre)
 - [ ] Zaman serisi anomali veri seti seçimi
 - [ ] GPU erişimi (yerel / bulut), Docker GPU desteği ne zaman
+  - Not: Yerel makinede NVIDIA GPU yok (AMD Vega 3). Küçük deneyler CPU'da, ağır deneyler bulut GPU'da (Colab/Kaggle).
 - [ ] Lisans: şimdilik yok (kod görünür, kullanım izni yok). Proje olgunlaşınca yeniden değerlendir: PolyForm Noncommercial, AGPL veya MIT. Not: lisans sonradan eklenebilir, ama verilen bir lisans o sürüm için geri alınamaz.
 
 ## Plan dışı, ileride
