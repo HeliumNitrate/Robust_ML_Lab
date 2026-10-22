@@ -198,3 +198,4 @@ Telekom ve bankacılığın kesişimindeki problemlere (dengesiz/sınırlı veri
 | Tarih | Madde | Not |
 |---|---|---|
 | 2026-10-14 | 0.1 (kısmen) | Klasör iskeleti, `pyproject.toml`, `.gitignore`; `import rmlab` çalışıyor |
+| 2026-10-21 | 0.6 (kısmen) | pytest `dev` extra olarak eklendi, `tests/test_import.py` (9 test geçiyor); CI sonraya |
