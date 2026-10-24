@@ -52,7 +52,7 @@ Telekom ve bankacılığın kesişimindeki problemlere (dengesiz/sınırlı veri
 ## 0. Altyapı ve çalışma düzeni `[TEMEL]`
 
 - [ ] **0.1** Repo iskeleti: `src/rmlab/{data,models,train,eval,scoring,augment,explain}`, `configs/`, `experiments/`, `tests/`, `splits/`
-- [ ] **0.2** Ortam: `pyproject.toml`, CPU Dockerfile, Makefile (`install`, `test`, `lint`, `train`, `eval`)
+- [ ] **0.2** Ortam: `pyproject.toml`, CPU Dockerfile, README'de komut listesi (Makefile yok: `make` Windows'ta varsayılan değil)
 - [ ] **0.3** Config sistemi: her deney bir YAML dosyası (karar: Hydra mı sade YAML mı)
 - [ ] **0.4** Deney takibi: koşu klasörü = config kopyası + `metrics.json` + git hash + log
 - [ ] **0.5** Tekrar üretilebilirlik: merkezi `set_seed()`, deterministik ayarlar
@@ -200,3 +200,4 @@ Telekom ve bankacılığın kesişimindeki problemlere (dengesiz/sınırlı veri
 | 2026-10-14 | 0.1 (kısmen) | Klasör iskeleti, `pyproject.toml`, `.gitignore`; `import rmlab` çalışıyor |
 | 2026-10-21 | 0.6 (kısmen) | pytest `dev` extra olarak eklendi, `tests/test_import.py` (9 test geçiyor); CI sonraya |
 | 2026-10-22 | 0.6 (kısmen) | ruff `dev` extra olarak eklendi (line-length 100, py311, E/F/I/UP/B); `.claude/` hariç; `.gitattributes` ile LF |
+| 2026-10-24 | 0 (düzen) | Çalışma düzeni değişti: Claude bulut kopyasında yazar ve push eder, kullanıcı `git pull` ile alır. Bölüm 0 sıralaması sadeleşti (Makefile yok, 4a/4b) |

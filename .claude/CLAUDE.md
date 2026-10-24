@@ -20,7 +20,7 @@ Kullanıcı bu projeyi kod yapısını ve yöntemleri öğrenmek için yapıyor.
 
 | Katman | Kapsam | Kim yazar | Önerilen output style |
 |---|---|---|---|
-| **A. Altyapı** | `pyproject.toml`, paket düzeni, Makefile, config yükleme, logging, seed, CI, Docker, CLI | Claude yazar, kullanıcı okur | `Explanatory` |
+| **A. Altyapı** | `pyproject.toml`, paket düzeni, config yükleme, logging, seed, CI, Docker, CLI | Claude yazar, kullanıcı okur | `Explanatory` |
 | **B. Yardımcı katman** | `data/` adaptörleri ve dönüşümler, bölme, `eval/` metrik ve raporlama, `train/` Trainer iskeleti | Claude yazar, kullanıcı üstünde küçük bir değişiklik yapar | `Explanatory` |
 | **C. ML çekirdeği** | `models/` mimarileri, kayıp fonksiyonları, eğitim adımı (`train_step`), `scoring/` OOD ve anomali yöntemleri, `augment/` üretken modeller, sentetik sinyal üretecinin fizik kısmı | Kullanıcı yazar | `Learning` |
 
@@ -42,12 +42,14 @@ Bölüm 0'ı tek seferde kurma. Her biri ayrı bir adım:
 1. Klasör yapısı + `pyproject.toml` + sanal ortam, paketin `import rmlab` ile yüklenmesi
 2. `pytest` ve ilk test
 3. `ruff` (lint ve format)
-4. YAML config yükleme
-5. Seed ve koşu klasörü (config kopyası, `metrics.json`, git hash)
-6. Sahte veriyle uçtan uca `train` komutu
-7. Makefile
-8. GitHub Actions (ilk deney çalıştıktan sonra)
-9. Docker (ilk deney çalıştıktan sonra)
+4. Config ve ilk koşu, iki adımda:
+   - 4a. YAML config yükleme (OmegaConf seçilirse): varsayılanlar + deney dosyası + komut satırı
+   - 4b. Seed, koşu klasörü (config kopyası, `metrics.json`, git hash) ve sahte veriyle uçtan uca `train` komutu
+5. GitHub Actions (CI) ve Docker: ilk gerçek deneyden sonra
+
+Makefile yok: `make` Windows'ta varsayılan olarak kurulu değil. Komutlar aşağıdaki "Komutlar" bölümünde ve README'de.
+
+Bölüm 0'dan sonra 1b (sentetik sinyal üreteci) ile ML'ye geçilir.
 
 ## Mimari
 
@@ -122,9 +124,10 @@ Yeni bir yöntem eklerken mevcut arayüzün altına ekle, yeni paralel bir yapı
 ## Komutlar
 
 ```bash
-make install        # bağımlılıklar (pip install -e ".[dev]")
-make test           # pytest
-make lint           # ruff check + format check
+python -m pip install -e ".[dev]"   # paket + geliştirme araçları
+python -m pytest                    # testler
+ruff check .                        # lint
+ruff format --check .               # format kontrolü (düzeltmek için: ruff format .)
 python -m rmlab.train --config configs/<deney>.yaml
 python -m rmlab.eval  --run experiments/<koşu>
 ```
@@ -136,6 +139,9 @@ python -m rmlab.eval  --run experiments/<koşu>
 - Bitince: testleri çalıştır, `.claude/PLAN.md`'de maddeyi işaretle, "İlerleme günlüğü"ne bir satır ekle.
 - Küçük, anlamlı commit'ler. Bir ana başlık bitince sürüm etiketi öner.
 - Bir karar `.claude/PLAN.md`'deki "Açık kararlar" listesindeyse, kendin karar verme; seçenekleri ve önerini sun.
-- Git ve GitHub işlemlerini (commit, push, dal) Claude yapmaz. Komutu ve ne işe yaradığını söyler, kullanıcı çalıştırır.
+- İki kopya düzeni: Claude bulut kopyasında dosyaları yazar, testleri ve ruff'ı çalıştırır, commit ve push eder. Kullanıcı yerelde (`D:\projeler\Robust_ML_Lab`) `git pull` ile alır ve VS Code'da okur.
+  - Claude her adıma başlamadan önce `git pull` yapar. Kullanıcı kendi tarafında bir şey push ettiğinde haber verir.
+  - İki taraf aynı dosyayı aynı anda değiştirmez.
+  - Windows'a özgü bir şey (kurulum, yol, PowerShell) gerektiğinde Claude komutu ve ne işe yaradığını söyler, kullanıcı çalıştırıp çıktıyı paylaşır.
 - Her adımın sonunda bir okuma rehberi ver: yeni ve değişen dosyalar; her dosyadaki fonksiyon ve class'lar (birer cümleyle); bunları kimin çağırdığı ve neyi kullandıkları; önerilen okuma sırası.
-- Referans repo: `../NN_training`. Yalnızca okunur, hiçbir dosyası değiştirilmez. Bir PLAN maddesine başlarken orada benzer bir şey yapılmış mı bak (özellikle `docs/FINDINGS.md`, `docs/CHANGELOG.md`, `docs/RESULTS.md`). Örnek alınacak veya kaçınılacak bir şey bulursan söyle. Kodu kopyalama, rmlab'ın mimarisine uyarlayarak yeniden yaz.
+- Referans repo: `HeliumNitrate/NN_training` (yerelde `../NN_training`). Yalnızca okunur, hiçbir dosyası değiştirilmez. Bir PLAN maddesine başlarken orada benzer bir şey yapılmış mı bak (özellikle `docs/FINDINGS.md`, `docs/CHANGELOG.md`, `docs/RESULTS.md`). Örnek alınacak veya kaçınılacak bir şey bulursan söyle. Kodu kopyalama, rmlab'ın mimarisine uyarlayarak yeniden yaz.
