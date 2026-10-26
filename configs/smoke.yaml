@@ -8,4 +8,6 @@ model:
   name: linear
 
 train:
-  epochs: 1
+  epochs: 5
+  optimizer:
+    lr: 0.05

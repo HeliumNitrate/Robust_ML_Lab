@@ -28,8 +28,8 @@ def write_experiment(config_dir: Path, text: str) -> Path:
 def test_smoke_config_merges_base_and_experiment() -> None:
     cfg = load_config(CONFIGS / "smoke.yaml")
     assert cfg.name == "smoke"  # from smoke.yaml
-    assert cfg.train.epochs == 1  # smoke.yaml overrides base
-    assert cfg.train.optimizer.lr == 1e-3  # only in base
+    assert cfg.train.epochs == 5  # smoke.yaml overrides base
+    assert cfg.train.optimizer.weight_decay == 0.0  # only in base
 
 
 def test_cli_overrides_win() -> None:
@@ -73,4 +73,4 @@ def test_save_config_writes_resolved_yaml(tmp_path: Path) -> None:
     out = tmp_path / "config.yaml"
     save_config(cfg, out)
     assert "${" not in out.read_text(encoding="utf-8")
-    assert OmegaConf.load(out).train.epochs == 1
+    assert OmegaConf.load(out).train.epochs == 5

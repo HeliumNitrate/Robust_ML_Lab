@@ -51,11 +51,11 @@ Telekom ve bankacılığın kesişimindeki problemlere (dengesiz/sınırlı veri
 
 ## 0. Altyapı ve çalışma düzeni `[TEMEL]`
 
-- [ ] **0.1** Repo iskeleti: `src/rmlab/{data,models,train,eval,scoring,augment,explain}`, `configs/`, `experiments/`, `tests/`, `splits/`
+- [x] **0.1** Repo iskeleti: `src/rmlab/{data,models,train,eval,scoring,augment,explain}`, `configs/`, `experiments/`, `tests/`, `splits/`
 - [ ] **0.2** Ortam: `pyproject.toml`, CPU Dockerfile, README'de komut listesi (Makefile yok: `make` Windows'ta varsayılan değil)
-- [ ] **0.3** Config sistemi: her deney bir YAML dosyası (karar: Hydra mı sade YAML mı)
-- [ ] **0.4** Deney takibi: koşu klasörü = config kopyası + `metrics.json` + git hash + log
-- [ ] **0.5** Tekrar üretilebilirlik: merkezi `set_seed()`, deterministik ayarlar
+- [x] **0.3** Config sistemi: her deney bir YAML dosyası (karar: Hydra mı sade YAML mı)
+- [x] **0.4** Deney takibi: koşu klasörü = config kopyası + `metrics.json` + git hash + log
+- [x] **0.5** Tekrar üretilebilirlik: merkezi `set_seed()`, deterministik ayarlar
 - [ ] **0.6** Test ve CI: pytest, GitHub Actions (lint + test)
 - [ ] **0.7** `CLAUDE.md` güncel tutulur
 
@@ -204,3 +204,4 @@ Telekom ve bankacılığın kesişimindeki problemlere (dengesiz/sınırlı veri
 | 2026-10-26 | 0.3 (kısmen) | OmegaConf ile config yükleme: `configs/base.yaml` + `smoke.yaml`, `utils/config.py` (`load_config`, `save_config`), 8 test; `device: auto` |
 | 2026-10-26 | — | `docs/design_principles.md`: baştan uyulacak 15 mühendislik ilkesi, PLAN maddelerine bağlı |
 | 2026-10-26 | 0.4, 0.5 (kısmen) | `utils/seed.py` (`set_seed`, `worker_init_fn`), `utils/run.py` (`Run`: koşu klasörü, `config.yaml`, `run_info.json` + git/dirty, log; `resolve_device`); numpy + torch eklendi; 25 test |
+| 2026-10-26 | 0.1, 0.3, 0.4, 0.5 ✔ | Uçtan uca `python -m rmlab.train --config configs/smoke.yaml`: kayıt defteri (`registry.py`), `Sample`/`SampleDataset`, `fake` veri, `linear` model, minimal döngü, `metrics.json` + `model.pt`; 36 test. Kalan: 0.2 Docker, 0.6 CI (ilk gerçek deneyden sonra) |

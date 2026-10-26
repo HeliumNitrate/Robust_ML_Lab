@@ -11,6 +11,7 @@ paths:
 data:
   name: ???        # dataset adapter registry name
   batch_size: 64
+  num_workers: 0   # DataLoader worker processes; 0 = load in the main process
   params: {}       # adapter-specific options, checked by the adapter itself
 
 model:
