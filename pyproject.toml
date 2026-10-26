@@ -8,7 +8,7 @@ version = "0.0.1"
 description = "Robust ML Lab: imbalanced data, anomaly detection, OOD and trustworthy ML experiments."
 readme = "README.md"
 requires-python = ">=3.11"
-dependencies = []
+dependencies = ["omegaconf>=2.3"]
 
 [project.optional-dependencies]
 dev = ["pytest>=8.4", "ruff>=0.6"]

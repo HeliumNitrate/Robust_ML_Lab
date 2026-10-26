@@ -1,0 +1,11 @@
+# Smoke test: tiny end-to-end run on fake data.
+name: smoke
+
+data:
+  name: fake
+
+model:
+  name: linear
+
+train:
+  epochs: 1

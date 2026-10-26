@@ -1,0 +1,26 @@
+# Default values for every experiment.
+# Experiment files override only what differs. "???" marks a required value.
+
+name: ???
+seed: 0
+
+paths:
+  runs: ${oc.env:RMLAB_RUNS_DIR,experiments}
+  data: ${oc.env:RMLAB_DATA_DIR,data}
+
+data:
+  name: ???        # dataset adapter registry name
+  batch_size: 64
+  params: {}       # adapter-specific options, checked by the adapter itself
+
+model:
+  name: ???        # model registry name
+  params: {}       # model-specific options, checked by the model builder itself
+
+train:
+  epochs: 10
+  device: auto     # auto: cuda if available, otherwise cpu
+  optimizer:
+    name: adam
+    lr: 1.0e-3
+    weight_decay: 0.0

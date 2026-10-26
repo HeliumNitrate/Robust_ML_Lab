@@ -178,7 +178,7 @@ Telekom ve bankacılığın kesişimindeki problemlere (dengesiz/sınırlı veri
 
 ## Açık kararlar
 
-- [ ] Config: Hydra mı sade YAML mı
+- [x] Config: **OmegaConf** (2026-10-26). Birleştirme, komut satırından ezme ve katı mod hazır geliyor; Hydra'nın çalışma dizinini değiştirmesi ve otomatik koşu klasörü gerekmiyor. Config dosyaları Hydra ile uyumlu, gerekirse geçilebilir
 - [ ] Deney takibi: dosya tabanlı mı MLflow mu (başlangıç önerisi: dosya tabanlı)
 - [ ] RadioML hangi sürüm (lisans ve boyuta göre)
 - [ ] Zaman serisi anomali veri seti seçimi
@@ -201,3 +201,4 @@ Telekom ve bankacılığın kesişimindeki problemlere (dengesiz/sınırlı veri
 | 2026-10-21 | 0.6 (kısmen) | pytest `dev` extra olarak eklendi, `tests/test_import.py` (9 test geçiyor); CI sonraya |
 | 2026-10-22 | 0.6 (kısmen) | ruff `dev` extra olarak eklendi (line-length 100, py311, E/F/I/UP/B); `.claude/` hariç; `.gitattributes` ile LF |
 | 2026-10-24 | 0 (düzen) | Çalışma düzeni değişti: Claude bulut kopyasında yazar ve push eder, kullanıcı `git pull` ile alır. Bölüm 0 sıralaması sadeleşti (Makefile yok, 4a/4b) |
+| 2026-10-26 | 0.3 (kısmen) | OmegaConf ile config yükleme: `configs/base.yaml` + `smoke.yaml`, `utils/config.py` (`load_config`, `save_config`), 8 test; `device: auto` |
