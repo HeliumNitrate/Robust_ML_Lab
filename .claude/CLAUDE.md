@@ -107,7 +107,7 @@ Yeni bir yöntem eklerken mevcut arayüzün altına ekle, yeni paralel bir yapı
 
 1. **Test bölmesi kilitlidir.** `splits/` altındaki dosyaları kullanıcının açık onayı olmadan yeniden üretme veya değiştirme.
 2. **Veri sızıntısı yok.** Normalizasyon istatistikleri, augmentation ve üretken modeller **yalnızca train bölmesiyle** eğitilir. Test verisi hiçbir eğitim veya seçim adımına girmez; model ve eşik seçimi val bölmesiyle yapılır.
-3. **Her deney bir config.** Kodda gömülü hiperparametre yok. Her koşu `experiments/<YYYYMMDD-HHMM>_<ad>/` altına config kopyası, `metrics.json`, git commit hash ve log yazar.
+3. **Her deney bir config.** Kodda gömülü hiperparametre yok. Her koşu `experiments/<YYYYMMDD-HHMMSS>_<ad>_s<seed>/` altına çözülmüş config (`config.yaml`), `run_info.json` (git commit + `dirty`, sürümler, çözülmüş değerler), `metrics.json` ve log yazar. Raporlanan sonuçlar yalnız `dirty: false` koşulardan gelir.
 4. **Tekrar üretilebilirlik.** Rastgelelik `utils.seed.set_seed()` üzerinden. Sonuçlar en az 3 seed ile raporlanır.
 5. **Metriklere dokunma.** Sonucu iyi göstermek için metrik tanımını, bölmeyi veya değerlendirme kodunu değiştirme. Olumsuz sonuçlar da raporlanır.
 6. **Gömülü yol yok.** Yollar config veya ortam değişkeninden gelir.
