@@ -145,3 +145,6 @@ python -m rmlab.eval  --run experiments/<koşu>
   - Windows'a özgü bir şey (kurulum, yol, PowerShell) gerektiğinde Claude komutu ve ne işe yaradığını söyler, kullanıcı çalıştırıp çıktıyı paylaşır.
 - Her adımın sonunda bir okuma rehberi ver: yeni ve değişen dosyalar; her dosyadaki fonksiyon ve class'lar (birer cümleyle); bunları kimin çağırdığı ve neyi kullandıkları; önerilen okuma sırası.
 - Referans repo: `HeliumNitrate/NN_training` (yerelde `../NN_training`). Yalnızca okunur, hiçbir dosyası değiştirilmez. Bir PLAN maddesine başlarken orada benzer bir şey yapılmış mı bak (özellikle `docs/FINDINGS.md`, `docs/CHANGELOG.md`, `docs/RESULTS.md`). Örnek alınacak veya kaçınılacak bir şey bulursan söyle. Kodu kopyalama, rmlab'ın mimarisine uyarlayarak yeniden yaz.
+  - Genel mühendislik ilkeleri: `docs/design_principles.md` (bu repo, public).
+  - Ayrıntılı dersler ve deneysel bulgular: NN_training'deki `docs/LESSONS_FOR_RMLAB.md` (private). İlgili maddeye başlarken oraya bak.
+  - Bu repo public: o projenin veri seti, sınıfları, sonuçları veya uygulama alanına ait ayrıntıları buraya yazma.

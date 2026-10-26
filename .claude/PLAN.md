@@ -202,3 +202,4 @@ Telekom ve bankacılığın kesişimindeki problemlere (dengesiz/sınırlı veri
 | 2026-10-22 | 0.6 (kısmen) | ruff `dev` extra olarak eklendi (line-length 100, py311, E/F/I/UP/B); `.claude/` hariç; `.gitattributes` ile LF |
 | 2026-10-24 | 0 (düzen) | Çalışma düzeni değişti: Claude bulut kopyasında yazar ve push eder, kullanıcı `git pull` ile alır. Bölüm 0 sıralaması sadeleşti (Makefile yok, 4a/4b) |
 | 2026-10-26 | 0.3 (kısmen) | OmegaConf ile config yükleme: `configs/base.yaml` + `smoke.yaml`, `utils/config.py` (`load_config`, `save_config`), 8 test; `device: auto` |
+| 2026-10-26 | — | `docs/design_principles.md`: baştan uyulacak 15 mühendislik ilkesi, PLAN maddelerine bağlı |
