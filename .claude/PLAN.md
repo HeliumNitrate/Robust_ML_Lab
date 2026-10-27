@@ -70,6 +70,12 @@ Telekom ve bankacılığın kesişimindeki problemlere (dengesiz/sınırlı veri
 - [ ] **1a.4** Her veri seti için `docs/data_cards/<ad>.md`: kaynak, lisans, boyut, sınıf dağılımı, bilinen sorunlar
 
 ### 1b. Sentetik sinyal üreteci `[TELEKOM]`
+
+> **Kararlar (2026-10-27):** ilk sürüm 6 sınıf: BPSK, QPSK, 8PSK, 16-QAM, 64-QAM, 2-FSK (analog AM/FM sonra).
+> Varsayılanlar RadioML 2016'ya yakın: örnek uzunluğu 128, 8 sps, SNR −20…+18 dB (2 dB adım).
+> Çıktı `(2, N)` I/Q, `meta`: snr, cfo, faz, `source_id`. Fizik kısmı (eşleme, RRC, kanal etkileri) kullanıcı yazar.
+> Okuma: PySDR bölüm 2, 3, 4 (eşleme) → 10 (gürültü) → 11, 16 (darbe şekillendirme) → 15 (sönümleme) → 17 (kanal simülasyonu).
+> SNR tanımı (Es/N0 / örnek başına) ve Rician, PySDR'da eksik; ilgili adımda ayrıca anlatılacak.
 - [ ] **1b.1** Modülasyonlar: BPSK, QPSK, 8PSK, 16/64-QAM, FSK, ...
 - [ ] **1b.2** Kanal etkileri: AWGN, sönümleme, frekans/faz kayması, zamanlama hatası
 - [ ] **1b.3** Parametreler: SNR, örnekleme hızı, örnek uzunluğu
@@ -205,3 +211,4 @@ Telekom ve bankacılığın kesişimindeki problemlere (dengesiz/sınırlı veri
 | 2026-10-26 | — | `docs/design_principles.md`: baştan uyulacak 15 mühendislik ilkesi, PLAN maddelerine bağlı |
 | 2026-10-26 | 0.4, 0.5 (kısmen) | `utils/seed.py` (`set_seed`, `worker_init_fn`), `utils/run.py` (`Run`: koşu klasörü, `config.yaml`, `run_info.json` + git/dirty, log; `resolve_device`); numpy + torch eklendi; 25 test |
 | 2026-10-26 | 0.1, 0.3, 0.4, 0.5 ✔ | Uçtan uca `python -m rmlab.train --config configs/smoke.yaml`: kayıt defteri (`registry.py`), `Sample`/`SampleDataset`, `fake` veri, `linear` model, minimal döngü, `metrics.json` + `model.pt`; 36 test. Kalan: 0.2 Docker, 0.6 CI (ilk gerçek deneyden sonra) |
+| 2026-10-27 | 0 → `v0.1-infra` | Altyapı etiketlendi; 1b kararları PLAN'a yazıldı |
